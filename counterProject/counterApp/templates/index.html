@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ninja Gold</title>
+        {% load static %}
+    </head>
+
+    <body>
+        <h1>Your Gold: {{request.session.amount}}</h1>
+        <form action='/' method='GET'>
+            {% csrf_token %}
+            <h1>Farm</h1>
+            <h2>(earns 10-20 golds)</h2>
+            <button type='submit'>Find Gold!</button>
+        </form>
+        <form action='/' method='GET'>
+            {% csrf_token %}
+            <h1>Cave</h1>
+            <h2>(earns 5-10 golds)</h2>
+            <button type='submit'>Find Gold</button>
+        </form>
+        <form action='/' method='GET'>
+            {% csrf_token %}
+            <h1>House</h1>
+            <h2>(earns 2-5 golds)</h2>
+            <button type='submit'>Find Gold</button>
+        </form>
+        <form action='/' method='GET'>
+            {% csrf_token %}
+            <h1>Casino</h1>
+            <h2>(earns 0-50 golds)</h2>
+            <button type='submit'>Find Gold</button>
+        </form>
+
+        <h3>Activities:</h3>
+        {% for activity in request.session.activity reversed %}
+        {{ activity | safe}}
+        {% endfor %}
+
+        
+
+        
+
+    </body>
+
+</html>
